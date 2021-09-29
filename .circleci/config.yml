@@ -1,16 +1,18 @@
-build:
-    working_directory: ~/entity-cooking
-    parallelism: 1
-    shell: /bin/bash --login
-
+version: 2.1
+executors:
+  my-custom-executor:
     docker:
-     - image: circleci/openjdk:8-jdk-browsers
-     
-     environment:
+      - image: cimg/base:stable
+
+environment:
       CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
       CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
 
+jobs:
+  Build:
+
+    executor: my-custom-executor
     steps:
       - checkout
-#      - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-      - run: mvn package
+      - run: mvn clean verify
+        
