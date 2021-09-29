@@ -21,7 +21,7 @@ workflows:
   deploy:
     jobs:
       - Build:
-          context: GhostOrg
+          context:
           filters:
             branches:
               only: main
