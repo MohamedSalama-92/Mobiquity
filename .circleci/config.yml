@@ -15,4 +15,13 @@ jobs:
     steps:
       - checkout
       - run: mvn clean verify
-        
+       
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          context: GhostOrg
+          filters:
+            branches:
+              only: main
