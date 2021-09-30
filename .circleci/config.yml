@@ -21,7 +21,7 @@ workflows:
   deploy:
     jobs:
       - Build:
-          context:
+          context: MobiquityContext
           filters:
             branches:
               only: main
